@@ -1,0 +1,132 @@
+[
+    {
+        "id": "22f6da3be7ea4557",
+        "type": "tab",
+        "label": "Fluxo 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1cceb137d7063b7c",
+        "type": "arduino in",
+        "z": "22f6da3be7ea4557",
+        "name": "",
+        "pin": "2",
+        "state": "INPUT",
+        "arduino": "a49f5c5a126a8c85",
+        "x": 110,
+        "y": 380,
+        "wires": [
+            [
+                "bb43ec975f021d76"
+            ]
+        ]
+    },
+    {
+        "id": "058cabc1bb1165b7",
+        "type": "mqtt out",
+        "z": "22f6da3be7ea4557",
+        "name": "",
+        "topic": "augustolima/movimentodetectado",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "90d607e68ae8164e",
+        "x": 580,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "bb43ec975f021d76",
+        "type": "function",
+        "z": "22f6da3be7ea4557",
+        "name": "função para acender",
+        "func": "if (msg.payload === 1) {\n    return { payload: 1 }\n} else {\n    return { payload: 0 }\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 380,
+        "wires": [
+            [
+                "2fd8b9d1dca42a2f",
+                "058cabc1bb1165b7"
+            ]
+        ]
+    },
+    {
+        "id": "2fd8b9d1dca42a2f",
+        "type": "arduino out",
+        "z": "22f6da3be7ea4557",
+        "name": "",
+        "pin": "7",
+        "state": "OUTPUT",
+        "arduino": "a49f5c5a126a8c85",
+        "x": 490,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "09a3f077442bacba",
+        "type": "mqtt in",
+        "z": "22f6da3be7ea4557",
+        "name": "",
+        "topic": "augustolima/movimentodetectado",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "90d607e68ae8164e",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a49f5c5a126a8c85",
+        "type": "arduino-board",
+        "device": "COM3"
+    },
+    {
+        "id": "90d607e68ae8164e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
